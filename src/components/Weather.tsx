@@ -1,33 +1,33 @@
 import { useWeather } from '@/api/useWeather';
 import { WEATHER_ICON } from '@/constants';
 import styles from '@/styles/Weather.module.css';
+import { getCurrentDate } from '@/utils/time';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Weather = () => {
 	const { weather, isLoading, isError } = useWeather();
-	const [dateTime, setDateTime] = useState('');
+	const [dateTime, setDateTime] = useState(getCurrentDate(weather?.timezone));
 
-	// const { timezone } = weather;
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			const currentDate = getCurrentDate(weather?.timezone);
 
-	// useEffect(() => {
-	// 	const intervalId = setInterval(() => {
-	// 		const currentDate = getCurrentDate(weather.timezone);
-	//
-	// 		setDateTime(currentDate);
-	// 	}, 1000);
-	//
-	// 	return () => clearInterval(intervalId);
-	// }, [timezone]);
+			setDateTime(currentDate);
+		}, 1000);
+
+		return () => clearInterval(intervalId);
+	}, [weather?.timezone]);
 
 	if (isLoading) return <div>Loading...</div>;
+	if (isError) return <div>Error fetching weather data</div>;
 
 	const currentWeather = weather?.weather[0];
 	const currentWeatherIcon = WEATHER_ICON[currentWeather.icon];
 
 	return (
 		<div className={styles.weather}>
-			<h3 className={styles['current-date']}>{dateTime}</h3>
+			<h3 className={styles['current-date']}>{dateTime ?? ''}</h3>
 			<div className={styles['current-weather']}>
 				<FontAwesomeIcon
 					className={styles['current-weather-icon']}

@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 
 export const getCurrentDate = (timezone: number) => {
+	if (!timezone) return;
+
 	const offset = `UTC${timezone < 0 ? '' : '+'}${timezone / 3600}`;
 	const dateTime = DateTime.now().setZone(offset);
 
