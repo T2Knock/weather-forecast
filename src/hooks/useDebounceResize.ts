@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react';
 
 export default function useDebouncedResize(delay: number) {
 	const [windowSize, setWindowSize] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
+		width: 0,
+		height: 0,
 	});
 
 	useEffect(() => {
-		let resizeTimeout: any;
+		setWindowSize({
+			width: window.innerWidth,
+			height: window.innerHeight,
+		});
 
 		const handleResize = () => {
-			clearTimeout(resizeTimeout);
-			resizeTimeout = setTimeout(() => {
+			setTimeout(() => {
 				setWindowSize({
 					width: window.innerWidth,
 					height: window.innerHeight,
@@ -22,7 +24,6 @@ export default function useDebouncedResize(delay: number) {
 		window.addEventListener('resize', handleResize);
 
 		return () => {
-			clearTimeout(resizeTimeout);
 			window.removeEventListener('resize', handleResize);
 		};
 	}, [delay]);
