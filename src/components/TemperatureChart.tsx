@@ -9,6 +9,8 @@ const renderToolTip = ({ payload }: Record<string, any>) => {
 };
 
 const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
+	const theme = 'light';
+
 	const renderData = chartData.map(
 		([date, forecastInfo]: [
 			date: string,
@@ -29,15 +31,15 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 						<Tooltip
 							content={renderToolTip}
 							cursor={{
-								stroke: `${COLOR.SECONDARY}`,
-								fill: `${COLOR.PRIMARY}`,
+								stroke: `${COLOR[theme].secondary}`,
+								fill: `${COLOR[theme].primary}`,
 							}}
 						/>
 						<Area
 							type="monotone"
 							dataKey="temperature"
-							stroke={COLOR.SECONDARY}
-							fill={COLOR.PRIMARY}
+							stroke={COLOR[theme].secondary}
+							fill={COLOR[theme].primary}
 							fillOpacity="0.5"
 						/>
 					</AreaChart>

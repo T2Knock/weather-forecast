@@ -46,7 +46,14 @@ export const DEFAULT_CITY_NAME = 'Hanoi';
 export const BREAK_WIDTH = 800;
 
 export const COLOR = {
-	PRIMARY: '#83c5be',
-	SECONDARY: '#006d77',
-	NEUTRAL: '#edf6f',
+	light: {
+		primary: '#83c5be',
+		secondary: '#006d77',
+		neutral: '#edf6f',
+	},
+	dark: {
+		primary: '#2ac3de',
+		secondary: '#b4f9f8',
+		neutral: '#414868',
+	},
 };

@@ -3,7 +3,13 @@ import '@/styles/globals.css';
 import { COLOR } from '@/constants';
 
 const Spinner = () => {
-	return <BallTriangle ariaLabel="loading-spinner" color={COLOR.PRIMARY} />;
+	const theme = 'light';
+	return (
+		<BallTriangle
+			ariaLabel="loading-spinner"
+			color={COLOR[theme].primary}
+		/>
+	);
 };
 
 export default Spinner;
