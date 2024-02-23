@@ -4,7 +4,7 @@ import { Location } from '@/components/Location';
 import WeatherInfo from '@/components/WeatherInfo';
 import useDebouncedResize from '@/hooks/useDebounceResize';
 import styles from '@/styles/page.module.css';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function Page() {
 	const [isFlipped, setIsFlipped] = useState(false);
