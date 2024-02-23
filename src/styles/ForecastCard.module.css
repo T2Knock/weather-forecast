@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  background: var(--secondary-color);
+  background: var(--primary-color);
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -9,12 +9,13 @@
   margin: 1rem 0;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
+  color: var(--neutral-color);
   cursor: grab;
   font-weight: bold;
 
   .icon {
     font-size: clamp(1.5rem, 4cqi, 3rem);
+    color: var(--secondary-color);
   }
 
   .metric {
@@ -24,7 +25,6 @@
     place-content: center;
 
     .title {
-      color: var(--neutral-color);
       margin-bottom: 0.5rem;
       font-weight: normal;
     }
@@ -32,12 +32,11 @@
 }
 
 .container:hover {
-  background: var(--primary-color);
-  color: var(--neutral-color);
+  background: var(--secondary-color);
   transition: all 0.25s ease-out;
 
-  .title {
-    color: var(--secondary-color);
+  .icon {
+    color: var(--primary-color);
   }
 }
 

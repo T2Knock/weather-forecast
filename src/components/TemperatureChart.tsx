@@ -1,3 +1,5 @@
+import { COLOR } from '@/constants';
+import { useTheme } from '@/hooks/useTheme';
 import styles from '@/styles/TemperatureChart.module.css';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -8,6 +10,7 @@ const renderToolTip = ({ payload }: Record<string, any>) => {
 };
 
 const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
+	const { theme } = useTheme();
 	const renderData = chartData.map(
 		([date, forecastInfo]: [
 			date: string,
@@ -28,15 +31,15 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 						<Tooltip
 							content={renderToolTip}
 							cursor={{
-								stroke: '#006D77',
-								fill: '#83C5BE',
+								stroke: `${COLOR[theme].secondary}`,
+								fill: `${COLOR[theme].primary}`,
 							}}
 						/>
 						<Area
 							type="monotone"
 							dataKey="temperature"
-							stroke="#006D77"
-							fill="#83C5BE"
+							stroke={COLOR[theme].secondary}
+							fill={COLOR[theme].primary}
 							fillOpacity="0.5"
 						/>
 					</AreaChart>
