@@ -1,3 +1,4 @@
+import { COLOR } from '@/constants';
 import styles from '@/styles/TemperatureChart.module.css';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -28,15 +29,15 @@ const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
 						<Tooltip
 							content={renderToolTip}
 							cursor={{
-								stroke: '#006D77',
-								fill: '#83C5BE',
+								stroke: `${COLOR.SECONDARY}`,
+								fill: `${COLOR.PRIMARY}`,
 							}}
 						/>
 						<Area
 							type="monotone"
 							dataKey="temperature"
-							stroke="#006D77"
-							fill="#83C5BE"
+							stroke={COLOR.SECONDARY}
+							fill={COLOR.PRIMARY}
 							fillOpacity="0.5"
 						/>
 					</AreaChart>
