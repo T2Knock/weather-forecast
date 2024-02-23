@@ -1,4 +1,5 @@
 import { COLOR } from '@/constants';
+import { useTheme } from '@/hooks/useTheme';
 import styles from '@/styles/TemperatureChart.module.css';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -9,8 +10,7 @@ const renderToolTip = ({ payload }: Record<string, any>) => {
 };
 
 const TemperatureChart = ({ chartData }: { chartData: Array<any> }) => {
-	const theme = 'light';
-
+	const { theme } = useTheme();
 	const renderData = chartData.map(
 		([date, forecastInfo]: [
 			date: string,

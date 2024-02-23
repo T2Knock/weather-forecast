@@ -45,7 +45,7 @@ export const WEATHER_ICON: Record<string, IconDefinition> = {
 export const DEFAULT_CITY_NAME = 'Hanoi';
 export const BREAK_WIDTH = 800;
 
-export const COLOR = {
+export const COLOR: Record<string, any> = {
 	light: {
 		primary: '#83c5be',
 		secondary: '#006d77',

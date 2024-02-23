@@ -1,9 +1,11 @@
 import { BallTriangle } from 'react-loader-spinner';
 import '@/styles/globals.css';
 import { COLOR } from '@/constants';
+import { useTheme } from '@/hooks/useTheme';
 
 const Spinner = () => {
-	const theme = 'light';
+	const { theme } = useTheme();
+
 	return (
 		<BallTriangle
 			ariaLabel="loading-spinner"
