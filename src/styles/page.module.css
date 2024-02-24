@@ -28,7 +28,7 @@
 	container-type: inline-size;
 }
 
-@media (width >=700px) {
+@media (width >=1000px) {
 	.card-container {
 		width: 70vw;
 	}
