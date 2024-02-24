@@ -10,7 +10,7 @@ import styles from '@/styles/page.module.css';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 export default function Page() {
-	const { theme, toggleTheme } = useTheme();
+	const { theme } = useTheme();
 
 	const [isFlipped, setIsFlipped] = useState(false);
 	const windowWidth = useDebouncedResize(200).width;
@@ -27,15 +27,6 @@ export default function Page() {
 
 	return (
 		<div className={theme}>
-			<div className={styles.setting}>
-				<button
-					className={styles['button']}
-					onClick={toggleTheme}
-					type="button"
-				>
-					toggle
-				</button>
-			</div>
 			<div className={styles['card-container']}>
 				<Location
 					isToggled={isFlipped}
