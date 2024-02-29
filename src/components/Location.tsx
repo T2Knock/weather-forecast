@@ -1,21 +1,23 @@
 import { useWeather } from '@/api/useWeather';
 import Toggle from '@/components/Toggle';
-import { BREAK_WIDTH } from '@/constants';
+import { TABLET_MOBILE_SIZE } from '@/constants';
 import styles from '@/styles/Location.module.css';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChangeEvent, MouseEventHandler } from 'react';
+import { ChangeEvent } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 export const Location = ({
 	isToggled,
 	toggleChange,
-	windowWidth,
 }: {
 	isToggled: boolean;
 	toggleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	windowWidth: number;
 }) => {
-	const { weather, isLoading, isError } = useWeather();
+	const { weather, isLoading } = useWeather();
+	const isTabletOrMobile = useMediaQuery({
+		query: `(max-width: ${TABLET_MOBILE_SIZE}px)`,
+	});
 
 	if (isLoading) return <div>Loading...</div>;
 
@@ -28,7 +30,7 @@ export const Location = ({
 				<FontAwesomeIcon className={styles.icon} icon={faMapPin} />
 				<span className={styles.text}>{`${name}, ${country}`}</span>
 			</div>
-			{windowWidth <= BREAK_WIDTH && (
+			{isTabletOrMobile && (
 				<Toggle toggled={isToggled} onChange={toggleChange} />
 			)}
 		</div>

@@ -1,19 +1,18 @@
 import Forecast from '@/components/Forecast';
 import Weather from '@/components/Weather';
-import { BREAK_WIDTH } from '@/constants';
+import { TABLET_MOBILE_SIZE } from '@/constants';
 import styles from '@/styles/WeatherInfo.module.css';
 import ReactCardFlip from 'react-card-flip';
+import { useMediaQuery } from 'react-responsive';
 
-const WeatherInfo = ({
-	isFlipped,
-	windowWidth,
-}: {
-	isFlipped: boolean;
-	windowWidth: number;
-}) => {
+const WeatherInfo = ({ isFlipped }: { isFlipped: boolean }) => {
+	const isTabletOrMobile = useMediaQuery({
+		query: `(max-width: ${TABLET_MOBILE_SIZE}px)`,
+	});
+
 	return (
 		<>
-			{windowWidth <= BREAK_WIDTH ? (
+			{isTabletOrMobile ? (
 				<ReactCardFlip isFlipped={isFlipped}>
 					<Weather />
 					<Forecast />
