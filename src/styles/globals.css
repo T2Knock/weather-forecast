@@ -26,7 +26,7 @@ body {
 @media (prefers-color-scheme: dark) {
 	body {
 		--neutral-color: #24283b;
-		--secondary-color: #b4f9f8;
-		--primary-color: #2ac3de;
+		--secondary-color: #2ac3de;
+		--primary-color: #bb9af7;
 	}
 }

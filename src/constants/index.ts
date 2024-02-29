@@ -55,8 +55,8 @@ export const COLOR: Record<string, any> = {
 		neutral: '#edf6f',
 	},
 	dark: {
-		primary: '#2ac3de',
-		secondary: '#b4f9f8',
-		neutral: '#414868',
+		primary: '#bb9af7',
+		secondary: '#2ac3de',
+		neutral: '#24283b',
 	},
 };
