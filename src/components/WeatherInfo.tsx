@@ -6,13 +6,16 @@ import ReactCardFlip from 'react-card-flip';
 import { useMediaQuery } from 'react-responsive';
 
 const WeatherInfo = ({ isFlipped }: { isFlipped: boolean }) => {
-	const isTabletOrMobile = useMediaQuery({
-		query: `(max-width: ${TABLET_MOBILE_SIZE}px)`,
+	const isTabletOrMobileWidth = useMediaQuery({
+		query: `(max-width: ${TABLET_MOBILE_SIZE.WIDTH}px)`,
+	});
+	const isTabletOrMobileHeight = useMediaQuery({
+		query: `(max-height: ${TABLET_MOBILE_SIZE.HEIGHT}px)`,
 	});
 
 	return (
 		<>
-			{isTabletOrMobile ? (
+			{isTabletOrMobileWidth || isTabletOrMobileHeight ? (
 				<ReactCardFlip isFlipped={isFlipped}>
 					<Weather />
 					<Forecast />

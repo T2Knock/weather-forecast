@@ -15,8 +15,11 @@ export const Location = ({
 	toggleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }) => {
 	const { weather, isLoading } = useWeather();
-	const isTabletOrMobile = useMediaQuery({
-		query: `(max-width: ${TABLET_MOBILE_SIZE}px)`,
+	const isTabletOrMobileWidth = useMediaQuery({
+		query: `(max-width: ${TABLET_MOBILE_SIZE.WIDTH}px)`,
+	});
+	const isTabletOrMobileHeight = useMediaQuery({
+		query: `(max-height: ${TABLET_MOBILE_SIZE.HEIGHT}px)`,
 	});
 
 	if (isLoading) return <div>Loading...</div>;
@@ -30,7 +33,7 @@ export const Location = ({
 				<FontAwesomeIcon className={styles.icon} icon={faMapPin} />
 				<span className={styles.text}>{`${name}, ${country}`}</span>
 			</div>
-			{isTabletOrMobile && (
+			{(isTabletOrMobileHeight || isTabletOrMobileWidth) && (
 				<Toggle toggled={isToggled} onChange={toggleChange} />
 			)}
 		</div>
